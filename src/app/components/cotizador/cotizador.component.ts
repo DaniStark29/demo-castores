@@ -30,7 +30,7 @@ export class CotizadorComponent implements OnInit {
     .subscribe( resp => {
 
       console.log(resp);
-      
+
     });
 
 

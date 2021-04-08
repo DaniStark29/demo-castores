@@ -17,9 +17,9 @@ export class ApiService {
   }
 
   calculo(data: any) {
-
-    const url = 'http://localhost:8000/api/calcular';
-    return this.http.get( url);
+    const idorigen = 1;
+    const url = `http://localhost:8000/api/calcular/${idorigen}`;
+    return this.http.get( url );
     
   }
 
