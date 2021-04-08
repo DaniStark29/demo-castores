@@ -18,6 +18,21 @@ export class CotizadorComponent implements OnInit {
           console.log(resp);
 
         });
+    
+    const data = {
+      id: '12',
+      userId: '1',
+      title: 'change title',
+      completed: true
+    };
+          
+    this.apiS.calculo(data)
+    .subscribe( resp => {
+
+      console.log(resp);
+      
+    });
+
 
   }
 

@@ -11,8 +11,15 @@ export class ApiService {
 
   getciudadescotizador() {
 
-    const url = 'https://clientes.castores.com.mx/WSPortal/app/services/getciudadescotizador';
+    const url = 'http://localhost:8000/api/origen';
     return this.http.get( url );
+    
+  }
+
+  calculo(data: any) {
+
+    const url = 'http://localhost:8000/api/calcular';
+    return this.http.get( url);
     
   }
 
