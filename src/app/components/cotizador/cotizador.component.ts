@@ -18,7 +18,25 @@ export class CotizadorComponent implements OnInit {
           console.log(resp);
 
         });
+
+    this.apiS.getdestinos()
+        .subscribe( resp => {
+
+          console.log(resp);
+
+        });
     
+    this.apiS.getempaques()
+    .subscribe( resp => {
+
+      console.log(resp);
+
+    });
+
+  }
+
+  formCotizador() {
+
     const data = {
       id: '12',
       userId: '1',
@@ -26,14 +44,13 @@ export class CotizadorComponent implements OnInit {
       completed: true
     };
           
-    this.apiS.calculo(data)
+    this.apiS.calcula(data)
     .subscribe( resp => {
 
       console.log(resp);
 
     });
-
-
+    
   }
 
 }

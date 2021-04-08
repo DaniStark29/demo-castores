@@ -16,8 +16,22 @@ export class ApiService {
     
   }
 
-  calculo(data: any) {
-    const idorigen = 1;
+  getdestinos() {
+
+    const url = 'http://localhost:8000/api/destinos';
+    return this.http.get( url );
+    
+  }
+
+  getempaques() {
+
+    const url = 'http://localhost:8000/api/empaques';
+    return this.http.get( url );
+    
+  }
+
+  calcula(idorigen: any) {
+
     const url = `http://localhost:8000/api/calcular/${idorigen}`;
     return this.http.get( url );
     
