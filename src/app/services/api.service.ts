@@ -11,30 +11,30 @@ export class ApiService {
 
   getciudadescotizador() {
 
-    const url = 'http://localhost:8000/api/origen';
+    const url = 'https://clientes.castores.com.mx/WSPortal/app/services/getciudadescotizador';
     return this.http.get( url );
-    
+
   }
 
   getdestinos() {
 
-    const url = 'http://localhost:8000/api/destinos';
+    const url = 'https://clientes.castores.com.mx/WSPortal/app/services/getdestinos';
     return this.http.get( url );
-    
+
   }
 
   getempaques() {
 
-    const url = 'http://localhost:8000/api/empaques';
+    const url = 'https://clientes.castores.com.mx/WSPortal/app/services/getempaques';
     return this.http.get( url );
-    
+
   }
 
   calcula(idorigen: any) {
 
     const url = `http://localhost:8000/api/calcular/${idorigen}`;
     return this.http.get( url );
-    
+
   }
 
 }
