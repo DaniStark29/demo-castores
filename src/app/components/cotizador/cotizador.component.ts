@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import {MatDialog} from '@angular/material/dialog';
+import { TotalComponent } from '../total/total.component';
+
 
 @Component({
   selector: 'app-cotizador',
@@ -7,39 +10,62 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./cotizador.component.css']
 })
 export class CotizadorComponent implements OnInit {
+ 
+  origenes: any;
+  destinos: any;
+  empaques: any;
+  importes: any;
+  flete: any;
+  seguro: any;
+  subtotal: any;
+  iva: any;
+  total: any;
 
-  constructor(private apiS: ApiService) { }
+
+  origen: string = "";
+  destino: string = "";
+  valor_d: string = "";
+
+  constructor(private apiS: ApiService,public dialog: MatDialog) { }
+  openDialog() {
+   this.dialog.open(TotalComponent);
+ }
 
   ngOnInit(): void {
 
     this.apiS.getciudadescotizador()
         .subscribe( resp => {
-
-          console.log(resp);
-
+          this.origenes=resp;
+          console.log('origen');
+          console.log(this.origenes);
         });
 
     this.apiS.getdestinos()
         .subscribe( resp => {
-
-          console.log(resp);
+          this.destinos=resp;
+          console.log('destinos');
+          console.log(this.destinos);
 
         });
-    
-    this.apiS.getempaques().subscribe( resp => {
 
-      console.log(resp);
+    this.apiS.getempaques()
+    .subscribe( resp => {
+      this.empaques=resp;
+      console.log('empaques');
+      console.log(this.empaques);
 
     });
     
-    this.formCotizador();
     
   }
 
+
   formCotizador() {
-  
+
     const data = {
-      "valordeclarado":1000,
+      "idorigen": this.origen,
+      "iddestino": this.destino,
+      "valordeclarado":this.valor_d,
       "valor":16,
       "prodquimico":0,
       "idmoneda":1,
@@ -69,14 +95,23 @@ export class CotizadorComponent implements OnInit {
       "alto": "01000",
       "id": 0
     };
-          
-    this.apiS.calcula(data)
-    .subscribe( resp => {
 
-      console.log(resp);
+    this.apiS.calcula(data)
+    .subscribe( (resp: any) => {
+
+      this.importes = resp.listadoimportes;
+      this.flete = this.importes[0].cantidad;
+      this.seguro = this.importes[1].cantidad;
+      this.subtotal = this.importes[22].cantidad;
+      this.iva = this.importes[23].cantidad;
+      this.total = this.importes[26].cantidad;
+      
+      console.log(this.importes);
 
     });
 
   }
+
+
 
 }

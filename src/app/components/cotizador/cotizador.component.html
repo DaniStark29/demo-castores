@@ -1,17 +1,144 @@
-<button class="btn btn-primary">Prueba botón</button>
-<mat-card>Simple card</mat-card>
-<mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
-</mat-form-field>
-<mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-        <mat-option value="one">First option</mat-option>
-        <mat-option value="two">Second option</mat-option>
-    </mat-select>
-</mat-form-field>
-<mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-</mat-form-field>
+<div class="container" id="fondo">
+    <div class="row" id="cabecera">
+        <div class="col" id="margen">
+            GRUPO CASTORES
+        </div>
+    </div>
+    <div class="row" id="margen">
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>ORIGEN</mat-label>
+                <mat-select [(ngModel)]="origen">
+                    <mat-option *ngFor="let origen of origenes" [value]="origen.idCiudad" name="origen">{{ origen.ciudad }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>ORIGEN</mat-label>
+                <mat-select [(ngModel)]="destino">
+                    <mat-option *ngFor="let destino of destinos" [value]="destino.idCiudad" name="destino">{{ destino.ciudad }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- <mat-form-field appearance="fill">
+                <mat-label>DESTINO</mat-label>
+                <mat-select [(ngModel)]="destino">
+                    <mat-option *ngFor="let destino of destinos" value="destino.idDestino" name="destino">{{ destino.ciudad }}</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>PIEZAS</mat-label>
+                <input matInput type="number" min="0" name="piezas">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>PESO(kg)</mat-label>
+                <input matInput type="number" min="0" name="peso">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>LARGO(cm)</mat-label>
+                <input matInput type="number" min="0" name="largo">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>ANCHO(cm)</mat-label>
+                <input matInput type="number" min="0" name="ancho">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>ALTO(cm)</mat-label>
+                <input matInput type="number" min="0" name="alto">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>CONTENIDO</mat-label>
+                <input matInput name="contenido">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="fill">
+                <mat-label>EMPAQUE</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let empaque of empaques" value="empaque.idEmpaque" name="empaque">{{ empaque.nombre }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="fill" id="ancho">
+                <mat-label>VALOR DECLARADO</mat-label>
+                $ <input matInput type="number" min="1000" value="1000" [name]="valor_d" [(ngModel)]="valor_d">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col">
+            <button type="button" class="btn btn-lg btn-secondary" (click)="formCotizador();">COTIZAR</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="fondo">
+    <div class="row" id="cabecera">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> </th>
+                <th scope="col"> CONCEPTO </th>
+                <th scope="col"> CANTIDAD </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> </td>
+                <th>FLETE </th>
+                <td>$ {{flete}} </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <th>SEGURO </th>
+                <td>$ {{seguro}} </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <th>SUBTOTAL </th>
+                <td>$ {{subtotal}}</td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <th>IVA </th>
+                <td>$ {{iva}}</td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <th>TOTAL </th>
+                <td>$ {{total}}</td>
+                <td> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
