@@ -15,7 +15,7 @@
         </div>
         <div class="col">
             <mat-form-field appearance="fill">
-                <mat-label>ORIGEN</mat-label>
+                <mat-label>DESTINO</mat-label>
                 <mat-select [(ngModel)]="destino">
                     <mat-option *ngFor="let destino of destinos" [value]="destino.idCiudad" name="destino">{{ destino.ciudad }}</mat-option>
                 </mat-select>
@@ -32,37 +32,37 @@
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>PIEZAS</mat-label>
-                <input matInput type="number" min="0" name="piezas">
+                <input matInput type="number" min="0" max="1" [name]="piezas" [(ngModel)]="piezas">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>PESO(kg)</mat-label>
-                <input matInput type="number" min="0" name="peso">
+                <input matInput type="number" min="0" [name]="peso" [(ngModel)]="peso">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>LARGO(cm)</mat-label>
-                <input matInput type="number" min="0" name="largo">
+                <input matInput type="number" min="0" [name]="largo" [(ngModel)]="largo">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>ANCHO(cm)</mat-label>
-                <input matInput type="number" min="0" name="ancho">
+                <input matInput type="number" min="0" [name]="ancho" [(ngModel)]="ancho">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>ALTO(cm)</mat-label>
-                <input matInput type="number" min="0" name="alto">
+                <input matInput type="number" min="0" [name]="alto" [(ngModel)]="alto">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>CONTENIDO</mat-label>
-                <input matInput name="contenido">
+                <input matInput name="contenido" [name]="contenido" [(ngModel)]="contenido">
             </mat-form-field>
         </div>
     </div>
@@ -70,8 +70,14 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>EMPAQUE</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let empaque of empaques" value="empaque.idEmpaque" name="empaque">{{ empaque.nombre }}</mat-option>
+                <mat-select [(ngModel)]="empaque">
+                  <div *ngFor="let empaque of empaques">
+                    <mat-option *ngIf="empaque.idEmpaque == '1027' || empaque.idEmpaque == '1011' || empaque.idEmpaque == '1001'
+                                    || empaque.idEmpaque == '1029' || empaque.idEmpaque == '1016' || empaque.idEmpaque == '1025'
+                                    || empaque.idEmpaque == '1002' || empaque.idEmpaque == '1028'"
+                                 [value]="empaque.idEmpaque" name="empaque">{{ empaque.nombre }}
+                    </mat-option>
+                 </div>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -80,7 +86,7 @@
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>VALOR DECLARADO</mat-label>
-                $ <input matInput type="number" min="1000" value="1000" [name]="valor_d" [(ngModel)]="valor_d">
+                <input matInput type="number" min="1000" value="1000" [name]="valor_d" [(ngModel)]="valor_d">
             </mat-form-field>
         </div>
     </div>
