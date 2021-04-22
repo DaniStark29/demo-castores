@@ -121,15 +121,15 @@ export class CotizadorComponent implements OnInit {
       "cantidad": this.piezas,
       "idempaque": this.empaque,
       "contiene": this.contenido,
-      "peso": this.peso_tonelada,
-      "mts3": this.mts3,
+      "peso": '2',
+      "mts3": '2',
       "etiquetas": "1",
-      "pesoe": this.pesoe,
-      "pesot": this.pesot,
+      "pesoe": '2',
+      "pesot": '2',
       "preciou": this.preciou,
-      "largo": this.largo_metros,
-      "ancho": this.ancho_metros,
-      "alto": this.alto_metros,
+      "largo": '2',
+      "ancho": '2',
+      "alto": '2',
       "id": 0
     };
 
