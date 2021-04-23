@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import {MatDialog} from '@angular/material/dialog';
 import { TotalComponent } from '../total/total.component';
@@ -10,7 +10,7 @@ import { TotalComponent } from '../total/total.component';
   styleUrls: ['./cotizador.component.css']
 })
 export class CotizadorComponent implements OnInit {
-
+  @ViewChild('alert', { static: false }) alert: ElementRef;
   origenes: any;
   destinos: any;
   empaques: any;
@@ -41,11 +41,20 @@ export class CotizadorComponent implements OnInit {
   preciou: any;
   contenido: any;
   empaque: any;
-
-  constructor(private apiS: ApiService,public dialog: MatDialog) { }
+  alertPieza=0;
+  alertVD=0;
+  constructor(private apiS: ApiService,public dialog: MatDialog) { 
+    
+  }
   openDialog() {
    this.dialog.open(TotalComponent);
  }
+
+ closeAlert() {
+  this.alert.nativeElement.classList.remove('show');
+  this.alertPieza=0;
+  this.alertVD=0;
+}
 
   ngOnInit(): void {
 
@@ -74,6 +83,7 @@ export class CotizadorComponent implements OnInit {
 
 
   }
+  
 
   formCotizador() {
     //Validacion de variables recibidas
@@ -91,11 +101,14 @@ export class CotizadorComponent implements OnInit {
     this.preciou=0;
   //validacion piezas
   if(this.piezas > 1 || this.piezas == '' || this.piezas == undefined){
-      alert("Se debe cotizar solo 1 pieza");
+      //alert("Se debe cotizar solo 1 pieza");
+      this.alertPieza=1;
+      
   }
   //validacion valor declarado
    else if(this.valor_d < 1000 || this.valor_d == '' || this.valor_d == undefined){
-     alert("El valor declarado debe ser igual o mayor a $1000");
+    this.alertVD=1;
+     //alert("El valor declarado debe ser igual o mayor a $1000");
    }
    //validar valor declarado si es correcto ejecutar funcion
    else{

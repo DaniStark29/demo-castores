@@ -4,6 +4,22 @@
             GRUPO CASTORES
         </div>
     </div>
+
+      <div *ngIf="1==alertPieza " #alert class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong *ngIf="1==alertPieza">Se debe cotizar solo 1 pieza</strong> 
+      </div>
+
+      <div *ngIf="1==alertVD" #alert class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong *ngIf="1==alertVD">El valor declarado debe ser igual o mayor a $1000</strong> 
+      </div>
+
+
     <div class="row" id="margen">
         <div class="col">
             <mat-form-field appearance="fill">
@@ -39,26 +55,45 @@
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>PESO(kg)</mat-label>
                 <input matInput type="number" min="0" [name]="peso" [(ngModel)]="peso">
+                <br>
+                <div *ngIf="pesot > 0 ">
+                    {{pesot}}
+                </div>
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>LARGO(cm)</mat-label>
                 <input matInput type="number" min="0" [name]="largo" [(ngModel)]="largo">
+                <br>
+                <div *ngIf="largo_metros > 0 ">
+                    {{largo_metros}}
+                </div>
+                
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>ANCHO(cm)</mat-label>
                 <input matInput type="number" min="0" [name]="ancho" [(ngModel)]="ancho">
+                <br>
+                <div *ngIf="ancho_metros > 0 ">
+                    {{ancho_metros}}
+                </div>
+                
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>ALTO(cm)</mat-label>
                 <input matInput type="number" min="0" [name]="alto" [(ngModel)]="alto">
+                <br>
+                <div *ngIf="alto_metros > 0 ">
+                    {{alto_metros}}
+                </div>
             </mat-form-field>
         </div>
+
         <div class="col">
             <mat-form-field appearance="fill" id="ancho">
                 <mat-label>CONTENIDO</mat-label>
@@ -66,6 +101,15 @@
             </mat-form-field>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="fill" id="mts3">
+                <mat-label> Mts3: {{mts3}}</mat-label>
+                <input matInput name="mts3" [name]="mts3" [disabled]="true">
+            </mat-form-field>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
             <mat-form-field appearance="fill">
